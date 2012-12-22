@@ -47,9 +47,10 @@ class TableFormatter(Formatter):
         print('Total length=%d' % sum(lens))
         formats = []
         hformats = []
-        for i in range(len(values)):
-            formats.append("%%-%ds" % lens[i])
-            hformats.append("%%-%ds" % lens[i])
+        for value, length in zip(values, lens):
+            formats.append("%%-%ds" % length)
+            hformats.append("%%-%ds" % length)
+            
         pattern = '|' + '|'.join(formats) + '|'
         hpattern = '|' + '|'.join(hformats) + '|'
         separator = '+' + '+'.join(['-' * n for n in lens]) + '+'
