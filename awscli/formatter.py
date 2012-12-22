@@ -56,8 +56,8 @@ class TableFormatter(Formatter):
         separator = '+' + '+'.join(['-' * n for n in lens]) + '+'
         h = []
         v = []
-        for i in range(len(headers)):
-            h.append(headers[i].center(lens[i]))
+        for header, length in zip(headers, lens):
+            h.append(header.center(length))
         if label:
             self.label(label, (sum(lens) + len(lens) - 1))
         print(separator)
